@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">TaskFlow <span>multi-service demo</span></div>
+    <div id="services" class="services" aria-label="Service status"></div>
+  </header>
+
+  <main class="layout">
+    <section class="main-col">
+      <div id="stats" class="stats"></div>
+
+      <form id="task-form" class="card form">
+        <h2>New task</h2>
+        <input id="title" name="title" placeholder="What needs to be done?" maxlength="200" required>
+        <textarea id="description" name="description" placeholder="Details (optional)" rows="2" maxlength="5000"></textarea>
+        <div class="form-row">
+          <select id="priority" name="priority" aria-label="Priority">
+            <option value="low">Low priority</option>
+            <option value="medium" selected>Medium priority</option>
+            <option value="high">High priority</option>
+          </select>
+          <button type="submit" class="btn primary">Add task</button>
+        </div>
+      </form>
+
+      <div id="filters" class="filters" role="tablist" aria-label="Filter tasks"></div>
+      <ul id="task-list" class="task-list"></ul>
+    </section>
+
+    <aside class="side-col">
+      <section class="card">
+        <h2>Report</h2>
+        <div id="report" class="report"></div>
+        <a class="btn" href="/reports/export.csv">Download CSV</a>
+      </section>
+      <section class="card">
+        <h2>Recent activity</h2>
+        <ul id="activity" class="activity"></ul>
+      </section>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
